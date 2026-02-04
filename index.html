@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PinUp Valentine Adventure</title>
+  <!-- Google Font (optional). Replace or remove if you prefer another elegant sans-serif. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Allura&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Main wrapper keeps all screens centered and responsive. -->
+  <main class="app">
+    <!-- Landing Screen -->
+    <section class="screen active" id="screen-landing" aria-labelledby="landing-title">
+      <div class="screen-content">
+        <!-- Placeholder graphic: replace with a sketch-style heart or minimal icon. -->
+        <div class="love-icon" aria-hidden="true">
+          <!-- Replace this with an SVG or image of your choice. -->
+          <span>♡</span>
+        </div>
+        <h1 id="landing-title">Hi PinUp</h1>
+        <h3>Wanna go on a small adventure with me?</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-q1">Yes</button>
+          <button class="btn btn-ghost" data-next="screen-maybe">Maybe Later</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Maybe Later Screen -->
+    <section class="screen" id="screen-maybe" aria-labelledby="maybe-title">
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span>✦</span>
+        </div>
+        <h3 id="maybe-title">Alright. Curiosity has good timing though.</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-landing">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question 1 -->
+    <section class="screen" id="screen-q1" aria-labelledby="q1-title">
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span>❥</span>
+        </div>
+        <h3 id="q1-title">Do we begin with a sunset stroll or a cozy café?</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-q2">Sunset stroll</button>
+          <button class="btn" data-next="screen-q2">Cozy café</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question 2 -->
+    <section class="screen" id="screen-q2" aria-labelledby="q2-title">
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span>♡</span>
+        </div>
+        <h3 id="q2-title">Should we trade a secret wish or a shared laugh?</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-q3">Secret wish</button>
+          <button class="btn" data-next="screen-q3">Shared laugh</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question 3 -->
+    <section class="screen" id="screen-q3" aria-labelledby="q3-title">
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span>✧</span>
+        </div>
+        <h3 id="q3-title">Do we keep it playful with mini dares or soft with compliments?</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-q4">Mini dares</button>
+          <button class="btn" data-next="screen-q4">Soft compliments</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question 4 -->
+    <section class="screen" id="screen-q4" aria-labelledby="q4-title">
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span>❣</span>
+        </div>
+        <h3 id="q4-title">Do we end with a star-gaze or a slow dance?</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-final">Star-gaze</button>
+          <button class="btn" data-next="screen-final">Slow dance</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Message Screen -->
+    <section class="screen" id="screen-final" aria-labelledby="final-title">
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span>♡</span>
+        </div>
+        <h1 id="final-title">A little Valentine note</h1>
+        <p>
+          I’m choosing a calm, sweet adventure with you: the kind that starts with a
+          gentle smile and ends with that quiet, happy feeling you keep tucked away.
+          We’ll wander, laugh, and swap tiny wishes, letting the night glow softly around
+          us. No rush, no fuss, just us and the moments we collect. If you’re in, I’ll
+          keep the playlist warm, the conversation soft, and the magic steady. Will you
+          be my Valentine and make this tiny journey ours?
+        </p>
+        <div class="button-row">
+          <!-- Optional: Replace the href with your song link. Do not autoplay. -->
+          <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=rtOvBOTyX00" target="_blank" rel="noreferrer">
+            Play our song
+          </a>
+          <button class="btn" data-next="screen-landing">Back to start</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

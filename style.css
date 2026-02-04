@@ -1,0 +1,155 @@
+/*
+  PinUp Valentine Adventure Styles
+  - Mobile-first, calm gradient background
+  - Minimalist, elegant, and playful
+*/
+
+:root {
+  --bg-start: #000000;
+  --bg-end: #a50019;
+  --text-main: #ffece4;
+  --text-muted: rgba(202, 202, 202, 0.945);
+  --accent: rgba(255, 220, 230, 0.3);
+  --button-bg: rgba(114, 114, 114, 0.473);
+  --button-border: rgb(255, 174, 0);
+  --button-hover: rgba(255, 255, 255, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Poppins", "Montserrat", "Lato", sans-serif;
+  color: var(--text-main);
+  background:linear-gradient(90deg, hsla(0, 100%, 19%, 1) 0%, hsla(0, 68%, 32%, 1) 35%, hsla(0, 77%, 31%, 1) 65%, hsla(0, 100%, 19%, 1) 100%);
+}
+
+/* App wrapper keeps everything centered. */
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+}
+
+/* Screen base styles. */
+.screen {
+  width: 100%;
+  max-width: 520px;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  position: absolute;
+}
+
+.screen.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+}
+
+.screen-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h1 {
+  font-family: 'Alex Brush', 'Allura',  "Sacramento", cursive ; 
+  font-size: clamp(2.5rem, 8vw, 4rem); 
+  font-weight: 450; 
+  letter-spacing: 0.5px; 
+  text-transform: none; 
+  color: var(--text-main, #fff); 
+  text-align: center; 
+  line-height: 1.2; 
+  margin: 20px 0; 
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.308); 
+}
+
+h3 {
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  font-weight:250;
+  color: #f5f5e6;
+}
+
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+/* Placeholder love icon styling. Replace with your own artwork. */
+.love-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.button-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--button-hover);
+  transform: scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.btn-ghost {
+  background: var(--button-bg);
+}
+
+@media (min-width: 768px) {
+  h3 {
+    font-size: 26px;
+  }
+
+  p {
+    font-size: 17px;
+  }
+
+  .button-row {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+/* End of style.css */
