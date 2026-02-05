@@ -1,18 +1,33 @@
 /*
   PinUp Valentine Adventure Styles
-  - Mobile-first, calm gradient background
-  - Minimalist, elegant, and playful
+  - Mobile-first
+  - Intentional minimalist UI with soft depth and motion
 */
 
 :root {
-  --bg-start: #000000;
-  --bg-end: #a50019;
-  --text-main: #ffece4;
-  --text-muted: rgba(202, 202, 202, 0.945);
-  --accent: rgba(255, 220, 230, 0.3);
-  --button-bg: rgba(114, 114, 114, 0.473);
-  --button-border: rgb(255, 174, 0);
-  --button-hover: rgba(255, 255, 255, 0.18);
+  --bg-0: #21030a;
+  --bg-1: #3f0714;
+  --bg-2: #6b0d22;
+
+  --text-main: #fff1ec;
+  --text-muted: rgba(255, 232, 225, 0.76);
+
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-strong: rgba(255, 255, 255, 0.14);
+  --surface-border: rgba(255, 232, 225, 0.2);
+
+  --accent: rgba(255, 212, 223, 0.35);
+  --accent-strong: rgba(255, 212, 223, 0.55);
+
+  --radius-xl: 24px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 14px 34px rgba(0, 0, 0, 0.28);
+  --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 14px 40px rgba(210, 42, 86, 0.2);
+
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 * {
@@ -25,10 +40,12 @@ body {
   min-height: 100vh;
   font-family: "Poppins", "Montserrat", "Lato", sans-serif;
   color: var(--text-main);
-  background:linear-gradient(90deg, hsla(0, 100%, 19%, 1) 0%, hsla(0, 68%, 32%, 1) 35%, hsla(0, 77%, 31%, 1) 65%, hsla(0, 100%, 19%, 1) 100%);
+  background:
+    radial-gradient(1200px 520px at 50% -8%, rgba(255, 151, 190, 0.14), transparent 60%),
+    linear-gradient(120deg, var(--bg-0) 0%, var(--bg-1) 52%, var(--bg-2) 100%);
 }
 
-/* App wrapper keeps everything centered. */
+/* App wrapper */
 .app {
   min-height: 100vh;
   display: flex;
@@ -37,20 +54,20 @@ body {
   padding: 32px 20px;
 }
 
-/* Screen base styles. */
+/* Screen base styles */
 .screen {
   width: 100%;
-  max-width: 520px;
+  max-width: 560px;
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(10px) scale(0.99);
   pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.35s var(--ease-smooth), transform 0.35s var(--ease-smooth);
   position: absolute;
 }
 
 .screen.active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   pointer-events: auto;
   position: relative;
 }
@@ -60,96 +77,387 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-glow);
+  backdrop-filter: blur(10px) saturate(110%);
+  -webkit-backdrop-filter: blur(10px) saturate(110%);
 }
 
 h1 {
-  font-family: 'Alex Brush', 'Allura',  "Sacramento", cursive ; 
-  font-size: clamp(2.5rem, 8vw, 4rem); 
-  font-weight: 450; 
-  letter-spacing: 0.5px; 
-  text-transform: none; 
-  color: var(--text-main, #fff); 
-  text-align: center; 
-  line-height: 1.2; 
-  margin: 20px 0; 
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.308); 
+  font-family: "Alex Brush", "Allura", "Sacramento", cursive;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin: 8px 0;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
 }
 
 h3 {
   font-size: clamp(1.1rem, 4vw, 1.5rem);
-  font-weight:250;
-  color: #f5f5e6;
+  font-weight: 350;
+  color: var(--text-main);
+  text-wrap: balance;
 }
-
 
 p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-main);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-muted);
 }
 
-/* Placeholder love icon styling. Replace with your own artwork. */
 .love-icon {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   border: 1px solid var(--accent);
   margin: 0 auto;
   display: grid;
   place-items: center;
-  font-size: 24px;
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.02);
+  font-size: 28px;
+  color: var(--text-main);
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+  box-shadow: var(--shadow-sm);
 }
 
 .button-row {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  min-height: 46px;
   padding: 12px 18px;
-  border-radius: 999px;
-  border: 1px solid var(--button-border);
-  background: var(--button-bg);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--surface-border);
+  background: var(--surface);
   color: var(--text-main);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 0.97rem;
   font-weight: 500;
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.2px;
+  transition:
+    transform 0.22s var(--ease-smooth),
+    background 0.22s var(--ease-smooth),
+    border-color 0.22s var(--ease-smooth),
+    box-shadow 0.22s var(--ease-smooth);
   cursor: pointer;
 }
 
-.btn:hover,
-.btn:focus {
-  background: var(--button-hover);
-  transform: scale(1.02);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+.btn:focus-visible {
+  background: var(--surface-strong);
+  border-color: var(--accent-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  outline: none;
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.985);
 }
 
 .btn-ghost {
-  background: var(--button-bg);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ---------------- Cards System ---------------- */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card {
+  border: 1px solid rgba(255, 232, 225, 0.18);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  transition:
+    transform 0.24s var(--ease-smooth),
+    box-shadow 0.24s var(--ease-smooth),
+    background 0.24s var(--ease-smooth),
+    border-color 0.24s var(--ease-smooth);
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+  border-color: rgba(255, 232, 225, 0.35);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+}
+
+.card:active {
+  transform: scale(0.99);
+}
+
+.card.card-primary {
+  border-color: var(--accent-strong);
+  background: linear-gradient(160deg, rgba(255, 216, 229, 0.22), rgba(255, 255, 255, 0.08));
+  box-shadow: 0 12px 30px rgba(210, 42, 86, 0.24);
+}
+
+/* Enhanced card covers with larger text icons */
+.card-cover {
+  width: 100%;
+  height: 120px; /* Height for the cover section */
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0; /* Rounded top corners for cover effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)); /* Base cover background */
+  border-bottom: 1px solid var(--surface-border);
+  transition: transform 0.24s var(--ease-smooth), box-shadow 0.24s var(--ease-smooth);
+}
+
+.card-icon {
+  font-size: 78px; /* Larger icon size as requested */
+  color: var(--text-main); /* Use your theme color */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow for depth */
+  transition: transform 0.24s var(--ease-smooth); /* Smooth hover effect */
+}
+
+/* Unique cover styles for each card type */
+.card-song .card-cover {
+  background: linear-gradient(160deg, rgba(255, 212, 223, 0.3), rgba(255, 151, 190, 0.1)); /* Pink music vibe */
+}
+
+.card-letter .card-cover {
+  background: linear-gradient(160deg, rgba(255, 232, 225, 0.3), rgba(255, 255, 255, 0.1)); /* Parchment-like */
+}
+
+.card-secret .card-cover {
+  background: linear-gradient(160deg, rgba(255, 216, 229, 0.3), rgba(210, 42, 86, 0.1)); /* Starry glow */
+  box-shadow: inset 0 0 10px rgba(255, 212, 223, 0.2); /* Inner glow for mystery */
+}
+.card-icon-text {
+  font-size: 78px; /* Match the SVG size */
+  color: #DC143C; /* Deep crimson red */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow */
+  transition: transform 0.24s var(--ease-smooth);
+}
+
+.card:hover .card-icon-text {
+  transform: scale(1.1); /* Same hover effect as SVGs */
+}
+/* Optional: Unique colors per card for variety */
+.card-song .card-icon-text {
+  color: #DC143C; /* Red for music/heart */
+}
+
+.card-letter .card-icon-text {
+  color: #8B0000; /* Darker red for letter */
+}
+
+.card-secret .card-icon-text {
+  color: #FFD700; /* Gold for star/sparkles */
+}
+/* Hover effects for covers and icons */
+.card:hover .card-cover {
+  transform: scale(1.05); /* Slight zoom on cover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .card-icon {
+  transform: scale(1.1); /* Icon grows slightly on hover */
+}
+
+/* Adjust overall card layout */
+.card {
+  padding: 0; /* Remove default padding tto let cover take space */
+  overflow: hidden; /* Ensures cover fits neatly */
+}
+
+.card p {
+  padding: 12px 16px; /* Add padding back for label and hint text */
+  margin: 0;
+}
+
+/* Keep primary card special (builds on existing .card-primary) */
+.card-primary .card-cover {
+  border-color: var(--accent-strong);
+  background: linear-gradient(160deg, rgba(255, 216, 229, 0.4), rgba(255, 255, 255, 0.15));
+}
+
+.love-icon-text {
+  font-size: 48px; /* Consistent large size */
+  color: #DC143C; /* Deep red for Valentine's theme */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Shadow for depth */
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+.love-icon:hover .love-icon-text {
+  transform: scale(1.1); /* Hover effect */
+}
+
+/* Optional: Unique colors for variety (add if you want differentiation) */
+.love-icon-text:nth-child(1) { color: #DC143C; } /* Landing: Red */
+.love-icon-text:nth-child(2) { color: #FFD700; } /* Maybe: Gold for sparkles */
+.love-icon-text:nth-child(3) { color: #FF6347; } /* Q1: Orange for sunset */
+.love-icon-text:nth-child(4) { color: #DC143C; } /* Q2: Red for smile */
+.love-icon-text:nth-child(5) { color: #FF69B4; } /* Q3: Pink for hearts */
+.love-icon-text:nth-child(6) { color: #FFD700; } /* Q4: Gold for star */
+.love-icon-text:nth-child(7) { color: #DC143C; } /* Song: Red for music */
+.love-icon-text:nth-child(8) { color: #8B0000; } /* Letter: Dark red */
+.love-icon-text:nth-child(9) { color: #FFD700; } /* Secret: Gold for lock */
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .card-cover {
+    height: 100px; /* Shorter cover on small screens */
+  }
+  .card-icon {
+    font-size: 40px; /* Slightly smaller icon on mobile */
+  }
+}
+/* Decorative elements (hearts and roses) - Add floating animations for romance */
+.decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevents interfering with clicks */
+  overflow: hidden; /* Keeps elements within bounds */
+  z-index: -1; /* Behind content */
+}
+
+.decor-page1 {
+  /* Specific to landing screen - you can add similar for other screens if needed */
+}
+
+.heart {
+  position: absolute;
+  width: 40px;
+  height: 36px;
+  background: transparent;
+  animation: float 6s ease-in-out infinite; /* Gentle floating */
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  width: 20px;
+  height: 30px;
+  background: var(--accent); /* Pinkish color from your vars */
+  border-radius: 20px 20px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.rose {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  animation: float 8s ease-in-out infinite reverse; /* Opposite direction for variety */
+}
+
+.rose::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, var(--accent-strong), var(--bg-2)); /* Gradient rose shape */
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(45deg);
+}
+
+/* Keyframes for floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* Position hearts and roses randomly across the screen (adjust as needed) */
+.heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
+.heart:nth-child(3) { bottom: 15%; left: 20%; animation-delay: 4s; }
+.rose:nth-child(4) { top: 30%; right: 10%; animation-delay: 1s; }
+.rose:nth-child(5) { bottom: 20%; right: 20%; animation-delay: 3s; }
+
+/* Mobile adjustments (builds on your existing media query) */
+@media (max-width: 600px) {
+  .heart { width: 30px; height: 27px; }
+  .heart::before, .heart::after { width: 15px; height: 22px; }
+  .rose { width: 30px; height: 30px; }
+  /* Reduce animation intensity for performance */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(3deg); }
+  }
+}
+
+/* Accessibility: Disable animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .heart, .rose {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------- */
+
+/* Responsive Grid */
+@media (min-width: 600px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 768px) {
-  h3 {
-    font-size: 26px;
-  }
-
-  p {
-    font-size: 17px;
-  }
-
+  h3 { font-size: 1.6rem; }
+  p { font-size: 1.05rem; }
+  .screen-content { padding: 30px; }
   .button-row {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
   }
+} 
+  @media (max-width: 600px) {
+  .heart { width: 30px; height: 27px; }
+  .heart::before, .heart::after { width: 30px; height: 27px; }
+  .rose { width: 35px; height: 35px; }
 }
-/* End of style.css */
+
+
+/* Accessibility: Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

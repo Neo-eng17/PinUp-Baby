@@ -30,4 +30,12 @@ buttons.forEach((button) => {
     }
   });
 });
-// Initialize the first screen as active on load.
+
+const cards = document.querySelectorAll('[data-card]');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    cards.forEach(c => c !== card && c.classList.remove('active'));
+    card.classList.toggle('active');
+  });
+});
