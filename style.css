@@ -43,6 +43,63 @@ body {
   background:
     radial-gradient(1200px 520px at 50% -8%, rgba(255, 151, 190, 0.14), transparent 60%),
     linear-gradient(120deg, var(--bg-0) 0%, var(--bg-1) 52%, var(--bg-2) 100%);
+  /* Add smooth liquid-like animation */
+  animation: liquidFlow 25s ease-in-out infinite; /* Slightly longer for smoother feel */
+}
+
+/* Keyframes for smooth, dissolved liquid flow effect */
+@keyframes liquidFlow {
+  0% {
+    background:
+      radial-gradient(1200px 520px at 50% -8%, rgba(255, 151, 190, 0.14), transparent 60%),
+      linear-gradient(120deg, var(--bg-0) 0%, var(--bg-1) 52%, var(--bg-2) 100%);
+  }
+  12.5% {
+    background:
+      radial-gradient(1200px 520px at 50% -7%, rgba(255, 151, 190, 0.15), transparent 60%),
+      linear-gradient(120deg, var(--bg-0) 5%, var(--bg-1) 47%, var(--bg-2) 95%);
+  }
+  25% {
+    background:
+      radial-gradient(1200px 520px at 50% -6%, rgba(255, 151, 190, 0.16), transparent 60%),
+      linear-gradient(120deg, var(--bg-1) 0%, var(--bg-2) 52%, var(--bg-0) 100%);
+  }
+  37.5% {
+    background:
+      radial-gradient(1200px 520px at 50% -7%, rgba(255, 151, 190, 0.17), transparent 60%),
+      linear-gradient(120deg, var(--bg-1) 5%, var(--bg-2) 47%, var(--bg-0) 95%);
+  }
+  50% {
+    background:
+      radial-gradient(1200px 520px at 50% -8%, rgba(255, 151, 190, 0.18), transparent 60%),
+      linear-gradient(120deg, var(--bg-2) 0%, var(--bg-0) 52%, var(--bg-1) 100%);
+  }
+  62.5% {
+    background:
+      radial-gradient(1200px 520px at 50% -7%, rgba(255, 151, 190, 0.17), transparent 60%),
+      linear-gradient(120deg, var(--bg-2) 5%, var(--bg-0) 47%, var(--bg-1) 95%);
+  }
+  75% {
+    background:
+      radial-gradient(1200px 520px at 50% -6%, rgba(255, 151, 190, 0.16), transparent 60%),
+      linear-gradient(120deg, var(--bg-1) 0%, var(--bg-0) 52%, var(--bg-2) 100%);
+  }
+  87.5% {
+    background:
+      radial-gradient(1200px 520px at 50% -7%, rgba(255, 151, 190, 0.15), transparent 60%),
+      linear-gradient(120deg, var(--bg-1) 5%, var(--bg-0) 47%, var(--bg-2) 95%);
+  }
+  100% {
+    background:
+      radial-gradient(1200px 520px at 50% -8%, rgba(255, 151, 190, 0.14), transparent 60%),
+      linear-gradient(120deg, var(--bg-0) 0%, var(--bg-1) 52%, var(--bg-2) 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
 }
 
 /* App wrapper */
