@@ -6,7 +6,7 @@
 
 :root {
   --bg-0: #4d0000;
-  --bg-1: #55001c;
+  --bg-1: #550000;
   --bg-2: #720019;
 
   --text-main: #fff5f1;
@@ -198,8 +198,8 @@ body::before {
   overflow: hidden;                      /* #1 most important: clips ALL children + backgrounds */
   background-clip: border-box;           /* Ensures gradient + image respect the border edge */
   background-image:
-    linear-gradient(rgba(77, 0, 0, 0.78), rgba(85, 0, 28, 0.85)),
-    url("technology-computer-creative-design.jpg");
+    linear-gradient(rgba(0, 0, 0, 0.479), rgb(82, 1, 7)),
+    url("pinup_snap.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
