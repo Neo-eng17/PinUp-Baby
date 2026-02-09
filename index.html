@@ -4,115 +4,271 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PinUp Valentine Adventure</title>
-  <!-- Google Font (optional). Replace or remove if you prefer another elegant sans-serif. -->
+  <!-- Fonts: Kept yours, added Great Vibes for elegance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Allura&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Allura&family=Great+Vibes&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Main wrapper keeps all screens centered and responsive. -->
   <main class="app">
-    <!-- Main wrapper keeps all screens centered and responsive. --> <main class="app"> <!-- Landing Screen --> <section class="screen active" id="screen-landing" aria-labelledby="landing-title"> <!-- Ambient background decor -->
-<div class="decor decor-ambient" aria-hidden="true">
-  <span class="heart"></span>
-  <span class="heart"></span>
-  <span class="heart"></span>
-  <span class="rose"></span>
-  <span class="rose"></span>
-</div>
- <div class="screen-content">
-<div class="love-icon" aria-hidden="true">
-  <span class="love-icon-text">💖</span>
-</div> <h1 id="landing-title">Hi PinUp</h1> <h3>Wanna go on a small adventure with me?</h3> <div class="button-row"> <button class="btn" data-next="screen-q1">Yes</button> <button class="btn btn-ghost" data-next="screen-maybe">Maybe Later</button> </div> </div> </section> <!-- Maybe Later Screen --> <section class="screen" id="screen-maybe" aria-labelledby="maybe-title"> <div class="decor decor-ambient" aria-hidden="true">
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="rose"></span>
-    <span class="rose"></span>
-  </div>
-  <div class="screen-content"> <div class="love-icon" aria-hidden="true">
-  <span class="love-icon-text">✨</span>
-</div> <h3 id="maybe-title">Alright. Curiosity has good timing though.</h3> <div class="button-row"> <button class="btn" data-next="screen-landing">Back</button> </div> </div> </section> <!-- Question 1 --> <section class="screen" id="screen-q1" aria-labelledby="q1-title"> <div class="decor decor-ambient" aria-hidden="true">
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="rose"></span>
-    <span class="rose"></span>
-  </div>
-  <div class="screen-content"> <div class="love-icon" aria-hidden="true">
-  <span class="love-icon-text">🌅</span>
-</div> <h3 id="q1-title">Do we begin with a sunset stroll or a cozy café?</h3> <div class="button-row"> <button class="btn" data-next="screen-q2">Sunset stroll</button> <button class="btn" data-next="screen-q2">Cozy café</button> </div> </div> </section> <!-- Question 2 --> <section class="screen" id="screen-q2" aria-labelledby="q2-title"> <div class="decor decor-ambient" aria-hidden="true">
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="rose"></span>
-    <span class="rose"></span>
-  </div>
-  <div class="screen-content"> <div class="love-icon" aria-hidden="true">
-  <span class="love-icon-text">😊</span>
-</div> <h3 id="q2-title">Should we trade a secret wish or a shared laugh?</h3> <div class="button-row"> <button class="btn" data-next="screen-q3">Secret wish</button> <button class="btn" data-next="screen-q3">Shared laugh</button> </div> </div> </section> <!-- Question 3 --> <section class="screen" id="screen-q3" aria-labelledby="q3-title"><div class="decor decor-ambient" aria-hidden="true">
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="rose"></span>
-    <span class="rose"></span>
-  </div>
-  <div class="screen-content"> <div class="love-icon" aria-hidden="true">
-  <span class="love-icon-text">💕</span>
-</div> <h3 id="q3-title">Do we keep it playful with mini dares or soft with compliments?</h3> <div class="button-row"> <button class="btn" data-next="screen-q4">Mini dares</button> <button class="btn" data-next="screen-q4">Soft compliments</button> </div> </div> </section> <!-- Question 4 --> <section class="screen" id="screen-q4" aria-labelledby="q4-title"><div class="decor decor-ambient" aria-hidden="true">
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="rose"></span>
-    <span class="rose"></span>
-  </div>
-  <div class="screen-content"> <div class="love-icon" aria-hidden="true">
-  <span class="love-icon-text">🌟</span>
-</div> <h3 id="q4-title">Do we end with a star-gaze or a slow dance?</h3> <div class="button-row"> <button class="btn" data-next="screen-final">Star-gaze</button> <button class="btn" data-next="screen-final">Slow dance</button> </div> </div> </section> <!-- Final Choice Screen --> <section class="screen" id="screen-final" aria-labelledby="final-title"> <div class="decor decor-ambient" aria-hidden="true">
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="heart"></span>
-    <span class="rose"></span>
-    <span class="rose"></span>
-  </div>
-  <div class="screen-content"> <h1 id="final-title">For You</h1> <h3>Three small things. One feeling.</h3> <div class="cards">
-  <!-- Card 1: Song -->
-  <button class="card card-song" data-next="screen-song" aria-label="Open our song">
-    <div class="card-cover">
-      <span class="card-icon-text">💖</span>
-    </div>
-    <p class="card-label">Our song</p>
-    <p class="card-hint">Tap to listen</p>
-  </button>
-  <!-- Card 2: Letter (Primary) -->
-  <button class="card card-primary card-letter" data-next="screen-letter" aria-label="Open the letter">
-    <div class="card-cover">
-      <span class="card-icon-text">💌</span>
-    </div>
-    <p class="card-label">A letter</p>
-    <p class="card-hint">Something I wrote for you</p>
-  </button>
-  <!-- Card 3: Intimate Detail -->
-  <button class="card card-secret" data-next="screen-secret" aria-label="Open something I notice">
-    <div class="card-cover">
-      <span class="card-icon-text">🔒</span>
-    </div>
-    <p class="card-label">Something I notice</p>
-    <p class="card-hint">A quiet truth</p>
-  </button>
-</div>
- <div class="button-row"> <button class="btn btn-ghost" data-next="screen-landing"> Back to start </button> </div> </div> </section> <!-- Song Screen --> <section class="screen" id="screen-song" aria-labelledby="song-title"> <div class="screen-content"> <div class="love-icon" aria-hidden="true"> <span>♫</span> </div> <h1 id="song-title">Our song</h1> <p> This song always sounds like you to me. It carries your calm, your warmth, and that quiet pull I never question. </p> <div class="button-row"> <a class="btn" href="https://www.youtube.com/watch?v=rtOvBOTyX00" target="_blank" rel="noreferrer" > Play it </a> <button class="btn btn-ghost" data-next="screen-final"> Back </button> </div> </div> </section> <!-- Letter Screen --> <section class="screen" id="screen-letter" aria-labelledby="letter-title"> <div class="screen-content"> <div class="love-icon" aria-hidden="true"> <span>✉</span> </div> <h1 id="letter-title">A letter</h1> <p> I’m choosing a calm, steady adventure with you. The kind that doesn’t need noise to feel real. </p> <p> You stood with me when direction felt thin, and somehow helped turn confusion into clarity. Loving you has taught me patience, courage, and how to grow without losing myself. </p> <p> I don’t need perfect moments. Just honesty, laughter, and the quiet certainty of walking side by side. </p> <div class="button-row"> <button class="btn btn-ghost" data-next="screen-final"> Back </button> </div> </div> </section> <!-- Secret Screen --> <section class="screen" id="screen-secret" aria-labelledby="secret-title"> <div class="screen-content"> <div class="love-icon" aria-hidden="true"> <span>✦</span> </div> <h1 id="secret-title">Something I notice</h1> <p> I notice how rooms feel steadier when you’re in them. </p> <p> How silence stops being empty and starts feeling safe. </p> <p> It’s not loud. It’s not obvious. But it’s always there. </p> <div class="button-row"> <button class="btn btn-ghost" data-next="screen-final"> Back </button> </div> </div> </section>
+    <!-- Landing Screen -->
+    <section class="screen active" id="screen-landing" aria-labelledby="landing-title">
+      <div class="decor decor-ambient" aria-hidden="true">
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="rose"></span>
+        <span class="rose"></span>
+      </div>
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span class="love-icon-text">💖</span>
+        </div>
+        <h1 id="landing-title">Hi PinUp</h1>
+        <h3>Let me show you something I made for you.</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-q1">Yes</button>
+          <button class="btn btn-ghost" data-next="screen-maybe">Maybe Later</button>
+        </div>
+      </div>
+    </section>
 
+    <!-- Maybe Later Screen -->
+    <section class="screen" id="screen-maybe" aria-labelledby="maybe-title">
+      <div class="decor decor-ambient" aria-hidden="true">
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="rose"></span>
+        <span class="rose"></span>
+      </div>
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span class="love-icon-text">✨</span>
+        </div>
+        <h3 id="maybe-title">Alright. Curiosity has good timing though.</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-landing">Back</button>
+        </div>
+      </div>
+    </section>
 
+    <!-- Question 1 -->
+    <section class="screen" id="screen-q1" aria-labelledby="q1-title">
+      <div class="decor decor-ambient" aria-hidden="true">
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="rose"></span>
+        <span class="rose"></span>
+      </div>
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span class="love-icon-text">🌅</span>
+        </div>
+        <h3 id="q1-title">How do you usually "Feel" first?</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-q2">Quietly</button>
+          <button class="btn" data-next="screen-q2">Deeply</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question 2 -->
+    <section class="screen" id="screen-q2" aria-labelledby="q2-title">
+      <div class="decor decor-ambient" aria-hidden="true">
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="rose"></span>
+        <span class="rose"></span>
+      </div>
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span class="love-icon-text">😊</span>
+        </div>
+        <h3 id="q2-title">Where does she feel most alive?</h3>
+        <button class="btn" data-next="screen-q3">Out in nature</button>
+        <button class="btn" data-next="screen-q3">In your Reggaeful room</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question 3 -->
+    <section class="screen" id="screen-q3" aria-labelledby="q3-title">
+      <div class="decor decor-ambient" aria-hidden="true">
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="rose"></span>
+        <span class="rose"></span>
+      </div>
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span class="love-icon-text">💕</span>
+        </div>
+        <h3 id="q3-title">When do we connect best?</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-q4">LemonTea Nightouts </button>
+          <button class="btn" data-next="screen-q4">Shared deeptalks</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question 4 -->
+    <section class="screen" id="screen-q4" aria-labelledby="q4-title">
+      <div class="decor decor-ambient" aria-hidden="true">
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="rose"></span>
+        <span class="rose"></span>
+      </div>
+      <div class="screen-content">
+        <div class="love-icon" aria-hidden="true">
+          <span class="love-icon-text">🌟</span>
+        </div>
+        <h3 id="q4-title">What came first?</h3>
+        <div class="button-row">
+          <button class="btn" data-next="screen-final">Our friendship</button>
+          <button class="btn" data-next="screen-final">Our love</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Choice Screen (Enhanced with Gift-Style Cards) -->
+    <section class="screen" id="screen-final" aria-labelledby="final-title">
+      <div class="decor decor-ambient floating-hearts" aria-hidden="true">
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="heart"></span>
+        <span class="rose"></span>
+        <span class="rose"></span>
+      </div>
+      <div class="screen-content overlay">
+        <h1 id="final-title">For You, PinUp ♥</h1>
+        <h3>I wanted this to feel intentional.</h3>
+        <div class="card-container">
+          <button class="card card-song" data-next="screen-song" aria-label="Open our song">
+            <div class="card-cover">
+              <span class="card-icon-text">🎶</span>
+            </div>
+            <p class="card-label">Our Song</p>
+            <p class="card-hint">A melody for our adventure</p>
+          </button>
+          <button class="card card-letter" data-next="screen-letter" aria-label="Open the letter">
+            <div class="card-cover">
+              <span class="card-icon-text">💌</span>
+            </div>
+            <p class="card-label">A Letter</p>
+            <p class="card-hint">Words from the heart</p>
+          </button>
+          <button class="card card-secret" data-next="screen-secret" aria-label="Open something I notice">
+            <div class="card-cover">
+              <span class="card-icon-text">🔒</span>
+            </div>
+            <p class="card-label">Jar of Secrets</p>
+            <p class="card-hint">Quiet truths I cherish</p>
+          </button>
+        </div>
+        <div class="button-row">
+          <button class="btn btn-ghost" data-next="screen-landing">Back to start</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Song Screen (Upgraded with Embed) -->
+    <section class="screen sub-page" id="screen-song" aria-labelledby="song-title">
+      <div class="screen-content overlay floating-hearts">
+        <div class="love-icon" aria-hidden="true">
+          <span>♫</span>
+        </div>
+        <h1 id="song-title">Our Song ♥</h1>
+        <p>This song sounds like you: Calm, steady, and impossible to ignore.</p>
+        <div class="music-container">
+           <iframe 
+  width="739" 
+  height="415" 
+  src="https://www.youtube.com/embed/mwjs25xrEI0" 
+  title="Carla Morrison - Disfruto" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  referrerpolicy="strict-origin-when-cross-origin" 
+  allowfullscreen>
+</iframe>
+        </div>
+        <div class="button-row">
+          <button class="btn btn-ghost" data-next="screen-final">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Letter Screen (Upgraded with Message Card) -->
+    <section class="screen sub-page" id="screen-letter" aria-labelledby="letter-title">
+      <div class="screen-content overlay floating-hearts">
+        <div class="love-icon" aria-hidden="true">
+          <span>✉</span>
+        </div>
+        <h1 id="letter-title">A Letter for You ♥</h1>
+        <div class="message-card">
+          <p>PinUp,</p>
+
+<p>
+Being with you feels steady. Not loud. Not rushed. Just, perfect like you were specifically made to complete me.
+You bring calmness into moments that could spiral. You challenge how I think, how I grow, and how honestly I show up.</p>
+<p><strong> This isn’t only about the perfect days we've had, but mostly about how we choose each other, even when things get real.</strong></p>
+<p>I wouldn’t trade our journey for anything. I’m so grateful for your belief in me, for us, and for the love we share. I hope this little adventure shows you how much you mean to me.
+<p>
+— MK
+</p>
+        </div>
+        <div class="button-row">
+          <button class="btn btn-ghost" data-next="screen-final">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secret Screen (Upgraded with Jar of Love) -->
+    <section class="screen sub-page" id="screen-secret" aria-labelledby="secret-title">
+      <div class="screen-content overlay floating-hearts">
+        <div class="love-icon" aria-hidden="true">
+          <span>✦</span>
+        </div>
+        <h1 id="secret-title">Things I Notice About You</h1>
+          <div class="jar-container">
+  <svg viewBox="0 0 24 24" width="100" height="100">
+    <circle cx="12" cy="12" r="8" fill="none" stroke="var(--white)" stroke-width="2"/>
+    <text x="12" y="16" text-anchor="middle" font-size="12" fill="var(--white)">♥ ♥ ♥ ♥</text>
+  </svg>
+
+  <button class="reason-button" onclick="toggleReason(1)" aria-label="Reveal reason 1">Reason 1</button>
+  <div id="reason1" class="reason-text">You bring peace, even in chaos.</div>
+
+  <button class="reason-button" onclick="toggleReason(2)" aria-label="Reveal reason 2">Reason 2</button>
+  <div id="reason2" class="reason-text">Your emotional awareness is rare.</div>
+
+  <button class="reason-button" onclick="toggleReason(3)" aria-label="Reveal reason 3">Reason 3</button>
+  <div id="reason3" class="reason-text">You challenge me to grow.</div>
+
+  <button class="reason-button" onclick="toggleReason(4)" aria-label="Reveal reason 4">Reason 4</button>
+  <div id="reason4" class="reason-text">Life feels lighter with you.</div>
+</div>
+
+        <div class="button-row">
+          <button class="btn btn-ghost" data-next="screen-final">Back</button>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="script.js"></script>
+  <script>
+    function toggleReason(id) {
+      const el = document.getElementById('reason' + id);
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 </body>
 </html>
