@@ -1,274 +1,213 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PinUp Valentine Adventure</title>
-  <!-- Fonts: Kept yours, added Great Vibes for elegance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Allura&family=Great+Vibes&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background-color: #fff5f5;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-cursive { font-family: 'Dancing Script', cursive; }
+        
+        .h1-custom {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.836), rgb(109, 0, 0));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .h2-custom { color: #4d0000; }
+        .h3-custom { color: #921631; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        .heart-particle {
+            position: absolute;
+            bottom: -50px;
+            pointer-events: none;
+            animation: float linear infinite;
+            z-index: 0;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(146, 22, 49, 0.2); border-radius: 10px; }
+
+        .transition-container {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .hidden-screen {
+            display: none;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .active-screen {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Custom icons to match Lucide without the lib */
+        .icon { width: 24px; height: 24px; display: inline-block; vertical-align: middle; }
+    </style>
+
 </head>
-<body>
-  <main class="app">
-    <!-- Landing Screen -->
-    <section class="screen active" id="screen-landing" aria-labelledby="landing-title">
-      <div class="decor decor-ambient" aria-hidden="true">
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="rose"></span>
-        <span class="rose"></span>
-      </div>
-      <div class="screen-content">
-        <div class="love-icon" aria-hidden="true">
-          <span class="love-icon-text">💖</span>
-        </div>
-        <h1 id="landing-title">Hi PinUp</h1>
-        <h3>Let me show you something I made for you.</h3>
-        <div class="button-row">
-          <button class="btn" data-next="screen-q1">Yes</button>
-          <button class="btn btn-ghost" data-next="screen-maybe">Maybe Later</button>
-        </div>
-      </div>
-    </section>
+<body class="selection:bg-rose-200">
+    <div id="particles-container" class="fixed inset-0 pointer-events-none"></div>
 
-    <!-- Maybe Later Screen -->
-    <section class="screen" id="screen-maybe" aria-labelledby="maybe-title">
-      <div class="decor decor-ambient" aria-hidden="true">
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="rose"></span>
-        <span class="rose"></span>
-      </div>
-      <div class="screen-content">
-        <div class="love-icon" aria-hidden="true">
-          <span class="love-icon-text">✨</span>
-        </div>
-        <h3 id="maybe-title">Alright. Curiosity has good timing though.</h3>
-        <div class="button-row">
-          <button class="btn" data-next="screen-landing">Back</button>
-        </div>
-      </div>
-    </section>
+    <!-- Decorative corners -->
+    <div class="fixed top-0 left-0 p-8 text-rose-200 opacity-30 pointer-events-none hidden md:block">
+        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </div>
+    <div class="fixed bottom-0 right-0 p-8 text-rose-200 opacity-30 pointer-events-none hidden md:block">
+        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </div>
 
-    <!-- Question 1 -->
-    <section class="screen" id="screen-q1" aria-labelledby="q1-title">
-      <div class="decor decor-ambient" aria-hidden="true">
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="rose"></span>
-        <span class="rose"></span>
-      </div>
-      <div class="screen-content">
-        <div class="love-icon" aria-hidden="true">
-          <span class="love-icon-text">🌅</span>
-        </div>
-        <h3 id="q1-title">How do you usually "Feel" first?</h3>
-        <div class="button-row">
-          <button class="btn" data-next="screen-q2">Quietly</button>
-          <button class="btn" data-next="screen-q2">Deeply</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Question 2 -->
-    <section class="screen" id="screen-q2" aria-labelledby="q2-title">
-      <div class="decor decor-ambient" aria-hidden="true">
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="rose"></span>
-        <span class="rose"></span>
-      </div>
-      <div class="screen-content">
-        <div class="love-icon" aria-hidden="true">
-          <span class="love-icon-text">😊</span>
-        </div>
-        <h3 id="q2-title">Where does she feel most alive?</h3>
-        <button class="btn" data-next="screen-q3">Out in nature</button>
-        <button class="btn" data-next="screen-q3">In your Reggaeful room</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Question 3 -->
-    <section class="screen" id="screen-q3" aria-labelledby="q3-title">
-      <div class="decor decor-ambient" aria-hidden="true">
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="rose"></span>
-        <span class="rose"></span>
-      </div>
-      <div class="screen-content">
-        <div class="love-icon" aria-hidden="true">
-          <span class="love-icon-text">💕</span>
-        </div>
-        <h3 id="q3-title">When do we connect best?</h3>
-        <div class="button-row">
-          <button class="btn" data-next="screen-q4">LemonTea Nightouts </button>
-          <button class="btn" data-next="screen-q4">Shared deeptalks</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Question 4 -->
-    <section class="screen" id="screen-q4" aria-labelledby="q4-title">
-      <div class="decor decor-ambient" aria-hidden="true">
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="rose"></span>
-        <span class="rose"></span>
-      </div>
-      <div class="screen-content">
-        <div class="love-icon" aria-hidden="true">
-          <span class="love-icon-text">🌟</span>
-        </div>
-        <h3 id="q4-title">What came first?</h3>
-        <div class="button-row">
-          <button class="btn" data-next="screen-final">Our friendship</button>
-          <button class="btn" data-next="screen-final">Our love</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final Choice Screen (Enhanced with Gift-Style Cards) -->
-    <section class="screen" id="screen-final" aria-labelledby="final-title">
-      <div class="decor decor-ambient floating-hearts" aria-hidden="true">
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="heart"></span>
-        <span class="rose"></span>
-        <span class="rose"></span>
-      </div>
-      <div class="screen-content overlay">
-        <h1 id="final-title">For You, PinUp ♥</h1>
-        <h3>I wanted this to feel intentional.</h3>
-        <div class="card-container">
-          <button class="card card-song" data-next="screen-song" aria-label="Open our song">
-            <div class="card-cover">
-              <span class="card-icon-text">🎶</span>
+    <main id="app-container" class="relative z-10 py-16 w-full min-h-screen flex items-center justify-center">
+        
+        <!-- START SCREEN -->
+        <section id="screen-start" class="transition-container active-screen flex-col items-center text-center px-6 max-w-xl mx-auto">
+            <div class="text-rose-500 mb-8 animate-pulse">
+                <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             </div>
-            <p class="card-label">Our Song</p>
-            <p class="card-hint">A melody for our adventure</p>
-          </button>
-          <button class="card card-letter" data-next="screen-letter" aria-label="Open the letter">
-            <div class="card-cover">
-              <span class="card-icon-text">💌</span>
+            <h1 class="font-serif text-4xl md:text-6xl mb-6 italic h1-custom">Hello Babygal...</h1>
+            <p class="text-rose-900/70 mb-10 text-lg leading-relaxed font-light">
+                I’ve built this little castle in my heart, and it fascinates me every time. 
+                Would you wander through a few curiosities with me?
+            </p>
+            <button id="btn-begin" class="group relative inline-flex items-center gap-2 px-8 py-4 bg-[#921631] text-white rounded-full font-medium overflow-hidden transition-all hover:bg-[#4d0000] shadow-lg active:scale-95">
+                <span>Begin our story</span>
+                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </section>
+
+        <!-- QUIZ SCREEN -->
+        <section id="screen-quiz" class="transition-container hidden-screen flex-col items-center w-full max-w-2xl px-6">
+            <button id="btn-quiz-back" class="self-start flex items-center gap-2 text-[#921631] hover:text-[#4d0000] mb-8 transition-colors group">
+                <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M15 19l-7-7 7-7"/></svg>
+                <span id="quiz-back-text" class="text-sm font-medium uppercase tracking-widest">Back to start</span>
+            </button>
+            <div class="text-center mb-12 w-full">
+                <span id="quiz-step-count" class="text-[#921631]/60 text-sm font-medium tracking-widest uppercase mb-4 block">Step 1 of 4</span>
+                <h2 id="quiz-question" class="font-serif text-3xl md:text-5xl mb-4 leading-tight italic h2-custom">Question goes here?</h2>
             </div>
-            <p class="card-label">A Letter</p>
-            <p class="card-hint">Words from the heart</p>
-          </button>
-          <button class="card card-secret" data-next="screen-secret" aria-label="Open something I notice">
-            <div class="card-cover">
-              <span class="card-icon-text">🔒</span>
+            <div class="grid md:grid-cols-2 gap-6 w-full">
+                <button id="quiz-option-a" class="group p-8 bg-white/40 backdrop-blur-sm border border-rose-100 rounded-2xl text-left transition-all hover:bg-white/60 hover:shadow-md active:scale-[0.98]">
+                    <h3 id="quiz-option-a-label" class="text-xl font-medium mb-2 h3-custom">Option A</h3>
+                    <p id="quiz-option-a-desc" class="text-[#4d0000]/70 text-sm leading-relaxed font-light">Description A</p>
+                </button>
+                <button id="quiz-option-b" class="group p-8 bg-white/40 backdrop-blur-sm border border-rose-100 rounded-2xl text-left transition-all hover:bg-white/60 hover:shadow-md active:scale-[0.98]">
+                    <h3 id="quiz-option-b-label" class="text-xl font-medium mb-2 h3-custom">Option B</h3>
+                    <p id="quiz-option-b-desc" class="text-[#4d0000]/70 text-sm leading-relaxed font-light">Description B</p>
+                </button>
             </div>
-            <p class="card-label">Jar of Secrets</p>
-            <p class="card-hint">Quiet truths I cherish</p>
-          </button>
-        </div>
-        <div class="button-row">
-          <button class="btn btn-ghost" data-next="screen-landing">Back to start</button>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Song Screen (Upgraded with Embed) -->
-    <section class="screen sub-page" id="screen-song" aria-labelledby="song-title">
-      <div class="screen-content overlay floating-hearts">
-        <div class="love-icon" aria-hidden="true">
-          <span>♫</span>
-        </div>
-        <h1 id="song-title">Our Song ♥</h1>
-        <p>This song sounds like you: Calm, steady, and impossible to ignore.</p>
-        <div class="music-container">
-           <iframe 
-  width="739" 
-  height="415" 
-  src="https://www.youtube.com/embed/mwjs25xrEI0" 
-  title="Carla Morrison - Disfruto" 
-  frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-  referrerpolicy="strict-origin-when-cross-origin" 
-  allowfullscreen>
-</iframe>
-        </div>
-        <div class="button-row">
-          <button class="btn btn-ghost" data-next="screen-final">Back</button>
-        </div>
-      </div>
-    </section>
+        <!-- CHOICE SCREEN -->
+        <section id="screen-choice" class="transition-container hidden-screen flex-col items-center text-center px-6 w-full max-w-4xl">
+            <div class="flex justify-center mb-8">
+                <button id="btn-choice-back" class="flex items-center gap-2 text-[#921631] hover:text-[#4d0000] transition-colors group">
+                    <svg class="w-4 h-4 group-hover:rotate-[-45deg] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    <span class="text-sm font-medium uppercase tracking-widest">Back to start page</span>
+                </button>
+            </div>
+            <h2 class="font-serif text-4xl md:text-5xl mb-12 italic h2-custom">Choose a path to my heart...</h2>
+            <div class="grid md:grid-cols-2 gap-8 w-full">
+                <button id="btn-go-message" class="group relative flex flex-col items-center p-10 bg-white/60 backdrop-blur-md rounded-[2.5rem] border border-white shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 overflow-hidden">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 text-[#921631] group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                    </div>
+                    <h3 class="font-serif text-2xl mb-2 h3-custom">For You ✉</h3>
+                    <p class="text-[#4d0000]/60 font-light">A whisper of words held in time.</p>
+                </button>
+                <button id="btn-go-magic" class="group relative flex flex-col items-center p-10 bg-white/60 backdrop-blur-md rounded-[2.5rem] border border-white shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 overflow-hidden">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 text-[#921631] group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+                    </div>
+                    <h3 class="font-serif text-2xl mb-2 h3-custom">The Magic ✨</h3>
+                    <p class="text-[#4d0000]/60 font-light">Reasons why you are the one.</p>
+                </button>
+            </div>
+        </section>
 
-    <!-- Letter Screen (Upgraded with Message Card) -->
-    <section class="screen sub-page" id="screen-letter" aria-labelledby="letter-title">
-      <div class="screen-content overlay floating-hearts">
-        <div class="love-icon" aria-hidden="true">
-          <span>✉</span>
-        </div>
-        <h1 id="letter-title">A Letter for You ♥</h1>
-        <div class="message-card">
-          <p>PinUp,</p>
+        <!-- MESSAGE SCREEN (THE LETTER) -->
+        <section id="screen-message" class="transition-container hidden-screen flex-col items-center w-full max-w-3xl px-6 pb-12 relative">
+            <div class="absolute inset-x-6 inset-y-0 -z-10 bg-cover bg-center rounded-[2.5rem] blur-xl opacity-20" style="background-image: url('https://images.unsplash.com/photo-1518599904199-0ca897819ddb?q=80&w=1920&auto=format&fit=crop');"></div>
+            <button id="btn-msg-back" class="self-start flex items-center gap-2 text-[#921631] hover:text-[#4d0000] mb-8 transition-colors group">
+                <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M15 19l-7-7 7-7"/></svg>
+                <span class="text-sm font-medium uppercase tracking-widest">Go Back</span>
+            </button>
+            <div class="bg-white/85 backdrop-blur-sm p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white relative overflow-hidden w-full">
+                <div class="absolute top-6 right-6 text-rose-300 w-8 h-8 opacity-50">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <h1 class="font-cursive text-5xl md:text-7xl mb-8 h1-custom">My Valentine...</h1>
+                <p id="final-message-text" class="font-serif text-xl md:text-2xl text-[#4d0000] leading-relaxed italic whitespace-pre-wrap mb-10">
+                    Message content here.
+                </p>
+                <div class="pt-8 border-t border-rose-100 flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
+                    <div class="flex items-center gap-3 text-[#921631]">
+                        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        <span class="text-sm font-medium italic">Music: Disfruto - Carla Morrison</span>
+                    </div>
+                    <p class="font-cursive text-4xl text-[#921631]">Always yours.</p>
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-sm aspect-video max-w-md mx-auto border border-rose-100 bg-black">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/S_mU_6LCHmE" title="Disfruto" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
 
-<p>
-Being with you feels steady. Not loud. Not rushed. Just, perfect like you were specifically made to complete me.
-You bring calmness into moments that could spiral. You challenge how I think, how I grow, and how honestly I show up.</p>
-<p><strong> This isn’t only about the perfect days we've had, but mostly about how we choose each other, even when things get real.</strong></p>
-<p>I wouldn’t trade our journey for anything. I’m so grateful for your belief in me, for us, and for the love we share. I hope this little adventure shows you how much you mean to me.
-<p>
-— MK
-</p>
-        </div>
-        <div class="button-row">
-          <button class="btn btn-ghost" data-next="screen-final">Back</button>
-        </div>
-      </div>
-    </section>
+        <!-- MAGIC SCREEN (REASONS) -->
+        <section id="screen-magic" class="transition-container hidden-screen flex-col items-center w-full max-w-5xl px-6 pb-12">
+            <button id="btn-magic-back" class="self-start flex items-center gap-2 text-[#921631] hover:text-[#4d0000] mb-8 transition-colors group">
+                <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M15 19l-7-7 7-7"/></svg>
+                <span class="text-sm font-medium uppercase tracking-widest">Go Back</span>
+            </button>
+            <div class="grid lg:grid-cols-2 gap-12 w-full">
+                <div class="space-y-6">
+                    <h2 class="font-serif text-4xl mb-8 italic h2-custom">Why I choose you...</h2>
+                    <div id="magical-reasons-list" class="space-y-4">
+                        <!-- Reasons injected by JS -->
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <div class="bg-white/80 backdrop-blur-md p-8 rounded-[2rem] border border-white shadow-xl">
+                        <div class="flex items-center gap-3 mb-6 text-[#921631]">
+                            <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                            <h3 class="text-sm font-medium tracking-widest uppercase">From Sheridan Brass</h3>
+                        </div>
+                        <p class="text-[#4d0000] mb-6 italic leading-relaxed font-light">
+                            "This melody always reminds me of the magic that happens whenever we are together..."
+                        </p>
+                        <div class="rounded-xl overflow-hidden shadow-sm aspect-video border border-rose-50 bg-black">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KSqJaawpjOM?start=111" title="Sheridan Brass" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="text-center text-[#921631]/60 text-xs mt-4">Enjoy our magic soundtrack</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Secret Screen (Upgraded with Jar of Love) -->
-    <section class="screen sub-page" id="screen-secret" aria-labelledby="secret-title">
-      <div class="screen-content overlay floating-hearts">
-        <div class="love-icon" aria-hidden="true">
-          <span>✦</span>
-        </div>
-        <h1 id="secret-title">Things I Notice About You</h1>
-          <div class="jar-container">
-  <svg viewBox="0 0 24 24" width="100" height="100">
-    <circle cx="12" cy="12" r="8" fill="none" stroke="var(--white)" stroke-width="2"/>
-    <text x="12" y="16" text-anchor="middle" font-size="12" fill="var(--white)">♥ ♥ ♥ ♥</text>
-  </svg>
+    </main>
 
-  <button class="reason-button" onclick="toggleReason(1)" aria-label="Reveal reason 1">Reason 1</button>
-  <div id="reason1" class="reason-text">You bring peace, even in chaos.</div>
+    <footer class="fixed bottom-4 left-0 w-full text-center pointer-events-none opacity-40">
+        <p class="text-xs font-light tracking-widest text-[#921631] uppercase">A Love Crafted with Creativity • 2026</p>
+    </footer>
 
-  <button class="reason-button" onclick="toggleReason(2)" aria-label="Reveal reason 2">Reason 2</button>
-  <div id="reason2" class="reason-text">Your emotional awareness is rare.</div>
-
-  <button class="reason-button" onclick="toggleReason(3)" aria-label="Reveal reason 3">Reason 3</button>
-  <div id="reason3" class="reason-text">You challenge me to grow.</div>
-
-  <button class="reason-button" onclick="toggleReason(4)" aria-label="Reveal reason 4">Reason 4</button>
-  <div id="reason4" class="reason-text">Life feels lighter with you.</div>
-</div>
-
-        <div class="button-row">
-          <button class="btn btn-ghost" data-next="screen-final">Back</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-  <script>
-    function toggleReason(id) {
-      const el = document.getElementById('reason' + id);
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
