@@ -17,12 +17,12 @@ const STAGES = [
         id: 2,
         question: "If our connection was a melody, how would it resonate in your heart?",
         optionA: {
-            label: "A Gentle Lullaby",
-            description: "Soft, steady, and keeping us safe."
+            label: "As a Gentle Lullaby",
+            description: "Soft, steady, and keeping us safe 🧸"
         },
         optionB: {
-            label: "A Wild Symphony",
-            description: "Passionate, loud, and energetic."
+            label: "As a Wild Symphony",
+            description: "Passionate, loud, and ❤️‍🔥"
         }
     },
     {
@@ -58,7 +58,15 @@ const MAGICAL_REASONS = [
     "The simple, beautiful truth that my life is infinitely better just because you are in it."
 ];
 
-const FINAL_MESSAGE = `My dearest, from the moment our paths crossed, my world found its missing rhythm. I am eternally grateful for the way you look at me, for your laughter that i've come to love 😍, and for the quiet strength you bring into my life. Every day with you is a gift I never expected but always hoped for. You made the Man deep in me blossom in the most free way. Thank you for believing in me, for loving me, and for letting me love you. This isn't just a day; it’s a reminder that you are my forever favorite person and i would choose you in every Lifetime.You're me 🫵🏻ـــــــــــــــﮩ٨ـ❤️️ I'm You.`;
+const FINAL_MESSAGE = `PinUp💜,
+
+From the moment our paths crossed, my world shifted, as if I had found its missing rhythm. I am eternally grateful for the way you look at me, for your laughter that I've come to love 😍, and for the quiet strength you bring into my life.
+
+Every day with you is a gift I never expected but always hoped for. You have allowed the man within me to blossom in the freest way.  Thank you for believing in me, for loving me, and for letting me love you. 
+
+This isn't just a day; it’s a reminder that you are my forever favorite person, and I would choose you in every lifetime.
+
+🫵🏻ـaishite kurete arigatou!ﮩ٨ـ❤️️.`;
 
 // STATE MANAGEMENT
 let currentState = 'START';
@@ -71,7 +79,9 @@ const screens = {
     'CHOICE': document.getElementById('screen-choice'),
     'MESSAGE': document.getElementById('screen-message'),
     'MAGIC': document.getElementById('screen-magic'),
+    'CLOSING': document.getElementById('screen-closing'),
 };
+
 
 const quizUI = {
     step: document.getElementById('quiz-step-count'),
@@ -94,6 +104,7 @@ function setScreen(stateId) {
         active.classList.remove('opacity-100');
         active.classList.add('opacity-0');
         active.style.transform = 'translateY(10px)';
+        if (stateId === 'CLOSING') startClosingSequence();
     }
 
     setTimeout(() => {
@@ -125,6 +136,7 @@ function setScreen(stateId) {
         currentState = stateId;
     }, active ? 400 : 0);
 }
+
 
 function updateQuizScreen() {
     const stage = STAGES[currentQuizStage];
@@ -159,6 +171,14 @@ function renderMagicReasons() {
         }, 100);
     });
 }
+
+function startClosingSequence() {
+    const btn = document.getElementById('btn-relive');
+    if (btn) {
+        btn.classList.remove('opacity-0', 'pointer-events-none');
+    }
+}
+
 
 // EVENT LISTENERS
 document.getElementById('btn-begin').addEventListener('click', () => {
@@ -201,6 +221,8 @@ document.getElementById('btn-go-message').addEventListener('click', () => setScr
 document.getElementById('btn-go-magic').addEventListener('click', () => setScreen('MAGIC'));
 document.getElementById('btn-msg-back').addEventListener('click', () => setScreen('CHOICE'));
 document.getElementById('btn-magic-back').addEventListener('click', () => setScreen('CHOICE'));
+document.getElementById('btn-go-closing').addEventListener('click', () => setScreen('CLOSING'));
+
 
 // HEART BACKGROUND ANIMATION
 function createHeart() {
@@ -238,3 +260,9 @@ window.addEventListener('load', () => {
     screens['START'].style.transform = 'translateY(0)';
     screens['START'].classList.add('opacity-100');
 });
+
+document.getElementById('btn-closing-back')
+    .addEventListener('click', () => setScreen('MESSAGE'));
+
+document.getElementById('btn-relive')
+    .addEventListener('click', () => setScreen('START'));
