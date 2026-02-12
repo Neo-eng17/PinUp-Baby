@@ -211,39 +211,78 @@
             </div>
         </section>
 
-        <!-- CLOSING SCREEN -->
+       <!-- CLOSING SCREEN -->
 <section id="screen-closing"
-  class="transition-container hidden-screen flex-col items-center justify-center w-full h-screen relative">
+  class="transition-container hidden-screen absolute inset-0 flex flex-col items-center justify-center bg-rose-50 overflow-hidden"
+  style="background-image: url('heap-red-heart-shape-3d-rendering.jpg'); background-size: cover; background-position: center;">
 
-  <!-- Fullscreen Valentine background -->
-  <div class="absolute inset-0 -z-10 bg-cover bg-center bg-contain"
-     style="background-image: url('nice-valentines-day-background-with-banner.jpg');">
-</div>
+  <!-- Soft gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-t 
+            from-black/60 
+            via-black/30 
+            to-transparent 
+            z-0"></div>
 
+  <!-- Floating hearts (keep your JS animation container) -->
+  <div id="closing-hearts" class="absolute inset-0 pointer-events-none z-0"></div>
 
-  <!-- Back button (top left) -->
+  <!-- Back button -->
   <button id="btn-closing-back"
-    class="absolute top-6 left-6 flex items-center gap-2 text-rose-100/80 hover:text-white transition-colors z-10">
-    <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform"
+    class="absolute top-6 left-6 flex items-center gap-2 text-rose-700 hover:text-rose-900 transition-colors z-20 font-bold text-xs uppercase tracking-widest">
+    <svg class="w-5 h-5 transition-transform hover:-translate-x-1"
          fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
       <path d="M15 19l-7-7 7-7"/>
     </svg>
-    <span class="text-xs font-medium uppercase tracking-widest">Back</span>
+    <span>Back</span>
   </button>
 
-  <!-- Floating hearts (subtle) -->
-  <div id="closing-hearts" class="absolute inset-0 pointer-events-none"></div>
+  <!-- Center Content -->
+  <div class="relative z-10 flex flex-col items-center text-center px-6 space-y-8">
+
+    <!-- Glowing Heart Icon -->
+    <div class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           class="w-24 h-24 md:w-32 md:h-32 text-rose-500 fill-rose-500 animate-pulse"
+           viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                 2 5.42 4.42 3 7.5 3 
+                 c1.74 0 3.41.81 4.5 2.09 
+                 C13.09 3.81 14.76 3 16.5 3 
+                 19.58 3 22 5.42 22 8.5 
+                 c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      <div class="absolute inset-0 bg-rose-400 rounded-full blur-xl opacity-40 -z-10"></div>
+    </div>
+
+   <!-- Title -->
+<h1 class="text-4xl md:text-7xl font-black tracking-wide
+           bg-gradient-to-br from-[#FFF4EC]  via-[#FFE0E0]  to-[#F8C8C8]  bg-clip-text  text-transparent drop-shadow-xl"> 
+  Happy Valentine's Day
+</h1>
+
+<!-- Subtext -->
+<p class="mt-6 text-lg md:text-2xl 
+ text-[#F4E6E6]   font-medium  max-w-2xl  leading-relaxed [text-shadow:0_2px_6px_rgba(0,0,0,0.5)]"> 
+  Thank you for being my source of peace, my queen.
+  <br class="hidden md:block"/>
+  This is just the beginning of our forever.
+</p> 
+
+  </div>
 
   <!-- Main Button -->
   <button id="btn-relive"
-    class="absolute bottom-1 left-1/2 transform -translate-x-1/2
-           px-10 py-4 rounded-full
-           bg-[#FCD9D9] text-red uppercase tracking-widest text-sm
-           shadow-lg hover:bg-[#7a0019] transition-all duration-300 active:scale-95">
+    class="absolute bottom-10 left-1/2 transform -translate-x-1/2
+           px-10 py-4 rounded-2xl
+           bg-rose-500 hover:bg-rose-700
+           text-white uppercase tracking-widest text-sm font-black
+           shadow-2xl shadow-rose-300
+           transition-all duration-300 active:scale-95 z-20">
     Begin Again With Me
   </button>
 
 </section>
+
 
 
 

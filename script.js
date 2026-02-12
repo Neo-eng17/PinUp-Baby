@@ -123,7 +123,7 @@ function setScreen(stateId) {
         
         // Render specific logic
         if (stateId === 'QUIZ') updateQuizScreen();
-        if (stateId === 'MESSAGE') finalMsgElement.textContent = FINAL_MESSAGE;
+        if (stateId === 'MESSAGE') startTypewriter(FINAL_MESSAGE);
         if (stateId === 'MAGIC') renderMagicReasons();
 
         // Fade in
@@ -179,6 +179,32 @@ function startClosingSequence() {
     }
 }
 
+let typingInterval = null;
+
+function startTypewriter(text) {
+    if (typingInterval) clearInterval(typingInterval);
+
+    finalMsgElement.textContent = "";
+    let index = 0;
+
+    function type() {
+        finalMsgElement.textContent += text.charAt(index);
+
+        let delay = 28;
+
+        if (text.charAt(index) === '.' || text.charAt(index) === ',') {
+            delay = 200; // pause after punctuation
+        }
+
+        index++;
+
+        if (index < text.length) {
+            typingInterval = setTimeout(type, delay);
+        }
+    }
+
+    type();
+}
 
 // EVENT LISTENERS
 document.getElementById('btn-begin').addEventListener('click', () => {
