@@ -310,14 +310,10 @@ document.getElementById('btn-begin').addEventListener('click', () => {
     setScreen('QUIZ');
 });
 
+
+
 const feedbackElement = document.getElementById('quiz-feedback');
 let quizLocked = false;
-
-document.getElementById('quiz-option-a')
-    .addEventListener('click', () => handleQuizAnswer('A'));
-
-document.getElementById('quiz-option-b')
-    .addEventListener('click', () => handleQuizAnswer('B'));
 
 function handleQuizAnswer(optionKey) {
     if (quizLocked) return;
@@ -325,13 +321,8 @@ function handleQuizAnswer(optionKey) {
 
     const stage = STAGES[currentQuizStage];
     const selected = optionKey === 'A' ? stage.optionA : stage.optionB;
-    const button = document.getElementById(
-        optionKey === 'A' ? 'quiz-option-a' : 'quiz-option-b'
-    );
-
-    const otherButton = document.getElementById(
-        optionKey === 'A' ? 'quiz-option-b' : 'quiz-option-a'
-    );
+    const button = document.getElementById(optionKey === 'A' ? 'quiz-option-a' : 'quiz-option-b');
+    const otherButton = document.getElementById(optionKey === 'A' ? 'quiz-option-b' : 'quiz-option-a');
 
     // Reset styles
     [button, otherButton].forEach(btn => {
@@ -341,23 +332,13 @@ function handleQuizAnswer(optionKey) {
         );
     });
 
-    // Show feedback
+    // Always show green for feedback (soft compliment)
+    button.classList.add('bg-green-50', 'border-green-500', 'text-green-700');
     feedbackElement.textContent = selected.feedback;
-    feedbackElement.classList.remove('hidden', 'text-green-600', 'text-rose-600');
+    feedbackElement.classList.remove('hidden', 'text-rose-600');
+    feedbackElement.classList.add('text-green-600', 'opacity-100');
 
-    if (selected.isCorrect) {
-        button.classList.add('bg-green-50', 'border-green-500', 'text-green-700');
-        feedbackElement.classList.add('text-green-600');
-    } else {
-        button.classList.add('bg-rose-50', 'border-rose-500', 'text-rose-700');
-        feedbackElement.classList.add('text-rose-600');
-    }
-
-    // Reveal feedback
-    feedbackElement.classList.remove('opacity-0');
-    feedbackElement.classList.add('opacity-100');
-
-    // Move next after delay
+    // After delay, go to next stage
     setTimeout(() => {
         feedbackElement.classList.add('hidden');
         quizLocked = false;
@@ -366,10 +347,15 @@ function handleQuizAnswer(optionKey) {
             currentQuizStage++;
             updateQuizScreen();
         } else {
-            setScreen('CHOICE');
+            setScreen('CHOICE'); // End of quiz
         }
     }, 2000);
 }
+
+// Attach listeners
+document.getElementById('quiz-option-a').addEventListener('click', () => handleQuizAnswer('A'));
+document.getElementById('quiz-option-b').addEventListener('click', () => handleQuizAnswer('B'));
+
 
 
 document.getElementById('btn-quiz-back').addEventListener('click', () => {
