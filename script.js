@@ -13,7 +13,7 @@ const STAGES = [
         optionB: {
             label: "In our room watching",
             description: "Watching Anime and choosing rival sides...✽𝕊𝕒𝕥𝕠𝕣𝕦 𝔾𝕠𝕛𝕠✽ ",
-            isCorrect: false,
+            isCorrect: true,
             feedback: "Tempting… but nature is where our souls breathe deeper. 🍃"
         }
     },
@@ -45,7 +45,7 @@ const STAGES = [
         optionB: {
             label: "Our Love",
             description: "The way we realized we were meant to be 💜🥰💞",
-            isCorrect: false,
+            isCorrect: true,
             feedback: "Love is powerful… but friendship made it unbreakable."
         }
     },
